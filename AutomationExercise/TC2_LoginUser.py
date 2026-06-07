@@ -31,6 +31,6 @@ assert "Admin" in welcomeUser, "Incorrect user logged in"
 print("User verified successfully")
 
 driver.find_element(By.XPATH, "//a[text()=' Delete Account']").click()
-accountDeleted = driver.find_element(By.XPATH, "//b[text()='Account Deleted!']")
+accountDeleted = wait.until(EC.visibility_of_element_located((By.XPATH, "//b[text()='Account Deleted!']")))
 assert accountDeleted.is_displayed(), "Error in deleting the account"
 print("User account deleted successfully")
