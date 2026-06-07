@@ -26,7 +26,7 @@ driver.find_element(By.XPATH, value="(//input[@name='email'])[1]").send_keys("ad
 driver.find_element(By.XPATH, value="//input[@name='password']").send_keys("Admin123")
 driver.find_element(By.XPATH, value="//button[@data-qa='login-button']").click()
 
-User = driver.find_element(By.CLASS_NAME, "fa-user")
+User = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "fa-user")))
 welcomeUser = driver.find_element(By.XPATH, "//a[contains(text(),'Logged in as')]").text
 assert "Admin" in welcomeUser, "Incorrect user logged in"
 print("User verified successfully")
