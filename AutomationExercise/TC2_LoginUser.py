@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 driver = webdriver.Chrome()
 driver.maximize_window()
 
-wait = WebDriverWait(driver, 10)
+wait = WebDriverWait(driver, 15)
 
 driver.get("https://automationexercise.com/")
 
@@ -74,6 +74,8 @@ driver.find_element(
     By.XPATH,
     "//a[text()=' Delete Account']"
 ).click()
+
+print("Account deleted!")
 
 accountDeleted = wait.until(
     EC.visibility_of_element_located(
