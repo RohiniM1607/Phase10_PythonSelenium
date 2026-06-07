@@ -6,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 driver = webdriver.Chrome()
 driver.maximize_window()
 driver.implicitly_wait(5)
+wait = WebDriverWait(driver, 10)
 
 driver.get("https://automationexercise.com/")
 homePage = driver.find_element(By.XPATH, value="//span[text()='Automation']")
@@ -30,7 +31,15 @@ welcomeUser = driver.find_element(By.XPATH, "//a[contains(text(),'Logged in as')
 assert "Admin" in welcomeUser, "Incorrect user logged in"
 print("User verified successfully")
 
+wait = WebDriverWait(driver, 10)
+
 driver.find_element(By.XPATH, "//a[text()=' Delete Account']").click()
-accountDeleted = driver.find_element(By.XPATH, "//b[text()='Account Deleted!']")
+
+accountDeleted = wait.until(
+    EC.visibility_of_element_located(
+        (By.XPATH, "//b[text()='Account Deleted!']")
+    )
+)
+
 assert accountDeleted.is_displayed(), "Error in deleting the account"
 print("User account deleted successfully")
