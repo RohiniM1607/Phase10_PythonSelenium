@@ -6,6 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 driver = webdriver.Chrome()
 driver.maximize_window()
 driver.implicitly_wait(5)
+wait = WebDriverWait(driver, 10)
 
 driver.get("https://automationexercise.com/")
 homePage = driver.find_element(By.XPATH, value="//span[text()='Automation']")
