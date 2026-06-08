@@ -23,7 +23,7 @@ newUser = wait.until(EC.visibility_of_element_located((By.XPATH, "//h2[text()='N
 print("New User Sign-up is visible")
 
 driver.find_element(By.XPATH, value="//input[@name='name']").send_keys("Admin")
-driver.find_element(By.XPATH, value="(//input[@name='email'])[2]").send_keys("admin_.123@gmail.com")
+driver.find_element(By.XPATH, value="(//input[@name='email'])[2]").send_keys("admin._.123@gmail.com")
 driver.find_element(By.XPATH, value="//button[@data-qa='signup-button']").click()
 
 accountInfo = driver.find_element(By.XPATH, value="//b[text()='Enter Account Information']")
