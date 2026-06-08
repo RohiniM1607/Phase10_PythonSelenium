@@ -4,8 +4,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.chrome.options import Options
 
-driver = webdriver.Chrome()
+options = Options()
+options.add_argument("--disable-notifications")
+options.add_argument("--password-store=basic")
+options.add_argument("--disable-save-password-bubble")
+
+driver = webdriver.Chrome(options=options)
 driver.maximize_window()
 wait = WebDriverWait(driver, 10)
 
@@ -22,8 +28,8 @@ driver.find_element(By.XPATH, value="//a[text()=' Signup / Login']").click()
 newUser = wait.until(EC.visibility_of_element_located((By.XPATH, "//h2[text()='New User Signup!']")))
 print("New User Sign-up is visible")
 
-driver.find_element(By.XPATH, value="//input[@name='name']").send_keys("Admin")
-driver.find_element(By.XPATH, value="(//input[@name='email'])[2]").send_keys("admin._.123@gmail.com")
+driver.find_element(By.XPATH, value="//input[@name='name']").send_keys("Demo")
+driver.find_element(By.XPATH, value="(//input[@name='email'])[2]").send_keys("demo.1@gmail.com")
 driver.find_element(By.XPATH, value="//button[@data-qa='signup-button']").click()
 
 accountInfo = driver.find_element(By.XPATH, value="//b[text()='Enter Account Information']")
@@ -31,7 +37,7 @@ if accountInfo.is_displayed():
     print("Enter Account Information is displayed")
 
 driver.find_element(By.XPATH, value="//input[@id='id_gender2']").click()
-driver.find_element(By.XPATH, value="//input[@type='password']").send_keys("Admin123")
+driver.find_element(By.XPATH, value="//input[@type='password']").send_keys("Demo123")
 
 
 day = Select(driver.find_element(By.ID, "days"))
@@ -45,8 +51,8 @@ year.select_by_visible_text("2015")
 driver.find_element(By.XPATH, value="(//input[@type='checkbox'])[1]").click()
 driver.find_element(By.XPATH, value="(//input[@type='checkbox'])[2]").click()
 
-driver.find_element(By.XPATH, value="//input[@id='first_name']").send_keys("Admin")
-driver.find_element(By.XPATH, value="//input[@id='last_name']").send_keys("123")
+driver.find_element(By.XPATH, value="//input[@id='first_name']").send_keys("Demo")
+driver.find_element(By.XPATH, value="//input[@id='last_name']").send_keys("1")
 driver.find_element(By.XPATH, value="//input[@id='company']").send_keys("SmartCliff")
 driver.find_element(By.XPATH, value="//input[@id='address1']").send_keys("Thilagar Street")
 driver.find_element(By.XPATH, value="//input[@id='address2']").send_keys("R.S Puram")
