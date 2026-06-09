@@ -56,6 +56,7 @@ driver.find_element(By.XPATH, value="//input[@id='last_name']").send_keys("1")
 driver.find_element(By.XPATH, value="//input[@id='company']").send_keys("SmartCliff")
 driver.find_element(By.XPATH, value="//input[@id='address1']").send_keys("Thilagar Street")
 driver.find_element(By.XPATH, value="//input[@id='address2']").send_keys("R.S Puram")
+Select(driver.find_element(By.ID, "country")).select_by_visible_text("India")
 driver.find_element(By.XPATH, value="//input[@id='state']").send_keys("Tamil Nadu")
 driver.find_element(By.XPATH, value="//input[@id='city']").send_keys("Coimbatore")
 driver.find_element(By.XPATH, value="//input[@id='zipcode']").send_keys("689 543")
@@ -72,7 +73,7 @@ driver.find_element(By.CLASS_NAME, "btn-primary").click()
 
 User = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "fa-user")))
 welcomeUser = driver.find_element(By.XPATH, "//a[contains(text(),'Logged in as')]").text
-assert "Admin" in welcomeUser, "Incorrect user logged in"
+assert "Demo" in welcomeUser, "Incorrect user logged in"
 print("User verified successfully")
 
 driver.find_element(By.XPATH, "//a[text()=' Delete Account']").click()
